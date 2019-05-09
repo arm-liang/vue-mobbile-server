@@ -56,8 +56,8 @@ NewsSchema.pre('save', function (next) {
 
         this.id = data.length;
         next();
-    })
-})
+    });
+});
 // 在新闻保存之后让新闻的评论自动添加
 NewsSchema.post('save', function (doc, next) {
     // 添加新闻评论的模板内容
@@ -68,7 +68,7 @@ NewsSchema.post('save', function (doc, next) {
             newsId: doc.id,
             comments: []
         }).save(next);
-    })
-})
+    });
+});
 
 module.exports = db.model('news', NewsSchema);

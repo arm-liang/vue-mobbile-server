@@ -16,8 +16,7 @@
 
 ## 新闻
 
-1. 查询新闻，pageIdx 表示页码
-[http://localhost:3000/api/getnews?pageIdx=1](null)
+1. 查询新闻，pageIdx 表示页码 [http://localhost:3000/api/getnews?pageIdx=1](null)
 
 2. 响应的数据格式
 
@@ -30,15 +29,16 @@
             clicked: 2,
             img_url: 'http://img1.baidu/a.png',
             title: '普通的标题',summary: '新闻的摘要',
-            content: '<h1>新闻的主要内容</h1>',
+            summary: '概要',
             add_time: '2019-04-27112019-04-27T12:53:13.489Z'
         }
     ]
 }
 ````
 
-3. 按照新闻 id 查询新闻详细
-[http://localhost:3000/api/getnewsdetail?newsId=1](null)
+1. 按照新闻 id 查询新闻详细 [http://localhost:3000/api/getnewsdetail?newsId=1](null)
+
+2. 响应数据
 
 ````javascript
 {
@@ -69,14 +69,12 @@
 }
 ````
 
-3. 添加新闻评论
-[http://localhost:3000/api/addnewscom](null)
+1. 添加新闻评论 [http://localhost:3000/api/addnewscom?newsId=number](null)
 
-4. 发送数据格式要求
+2. 发送数据格式要求 `post` 方法发送
 
 ````javascript
 {
-    newsId: 1,
     username: 'username',
     content: '这个是我的内容'
 }
@@ -85,3 +83,50 @@
 3. 响应数据格式
 
 如上定义
+
+## 图片 photo
+
+1. 获取图片分类 [http://localhost:3000/api/getphotypes](null)
+2. 响应数据格式
+
+````javascript
+{
+    status: 1
+    types: ['清纯美女', '动漫']
+}
+````
+
+1. 分页获取对应分类的所有图片信息 [http://localhost:3000/api/getpho?pageIdx=0&type=类型](null)，`如果没有添加分类信息则是查询所有`
+2. 响应数据格式
+
+````javascript
+{
+    status: 1,
+    phos: [{
+        phoId: 1,
+        type: '类型',
+        phos: ['图片1', '图片2']
+    }]
+}
+````
+
+1. 根据图片的id查询图片的详细 [http://localhost:3000/api/getphodetail?phoId=1](null)
+2. 响应数据格式
+
+````javascript
+{
+    phoId: 1,
+    type: '类型',
+}
+````
+
+1. 根据图片的id查询图片的所有评论 [http://localhost:3000/api/getphocom?phoId=1](null)
+
+````javascript
+{
+    comId: 0,
+    username: '匿名',
+    comDate: '2019-05-08T02:56:03.187+00:00',
+    content: '沙发'
+}
+````

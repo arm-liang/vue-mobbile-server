@@ -28,42 +28,33 @@ const NewsCommentScheme = new mongoose.Schema({
     }]
 });
 
-// 定义通过 新闻 id 查询评论的静态方法
-NewsCommentScheme.statics.findByNewsId = function (id, callback) {
-    this.model('newscomment').find({
-        'newsId': id
-    }, callback);
-}
-
 // 通过 新闻 id 分页查询评论的方法
 NewsCommentScheme.statics.findByPageIdx = function (id, pageIdx, callback) {
-    this.model('newscomment').find({
-        newsId: id
+    const limStart = PAGE_SIZE * (pageIdx - 1);
+    this.model('newscomment').findOne({
+        'newsId': id
     }, {
-        comments: 1
-    }).skip(PAGE_SIZE * (pageIdx - 1)).limit(PAGE_SIZE).exec(callback);
-}
+        comments: {
+            $slice: [limStart, limStart + PAGE_SIZE]
+        }
+    }).exec(callback);
+};
 
 // 定义实例的添加评论方法
 NewsCommentScheme.statics.addComment = function (newsId, comment, callback) {
-    Comment.findOneAndUpdate({
+    Comment.findOne({
         newsId: newsId
-    }, {
-        $push: {
-            'comments': comment
-        }
-    }, {
-        new: true
     }, (err, data) => {
         if (err) return console.log(err);
         // 更新 评论的id自增
         const commentsList = data.comments;
-        // 修改i最后一个评论的id为 length
-        commentsList[commentsList.length - 1].comId = commentsList.length;
+        comment.comId = commentsList.length;
+
+        data.comments.push(comment);
         // 继续修改这里的内容
         data.save(callback);
-    })
-}
+    });
+};
 
 // 通过这个 Schema 注册一个 Model
 const Comment = db.model('newscomment', NewsCommentScheme);
