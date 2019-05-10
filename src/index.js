@@ -33,6 +33,9 @@ app.get('/api/getcover', router.doGetCover);
 // 根据新闻 newsId 和 pageIdx 分页获取新闻的评论
 app.get('/api/getnewscom', router.doGetCommentByNewsId);
 
+// 添加评论
+app.post('/api/addnewscom', router.doAddNewsComment);
+
 // ---------------------- 新闻News路由结束 ----------------------
 
 // ---------------------- 图片Photo路由开始 ----------------------
@@ -54,13 +57,26 @@ app.post('/api/addphocom', router.doAddPhoComment);
 
 // ---------------------- 图片Photo路由结束 ----------------------
 
+// ---------------------- 商品Goods路由开始吃 ----------------------
+
+// 通过页码分页查询所有的商品信息
+app.get('/api/getgod', router.doGetGoodsByPage);
+
+// 通过商品id和页码分页查询商品的评论
+app.get('/api/getgodcom', router.doGetCommentByGodId);
+
+// 获取商品详细
+app.get('/api/getgoddetail', router.doFindGodDetailByid);
+
+// POST 添加商品评论
+app.post('/api/addgodcom', router.doAddGodComment);
+// ---------------------- 商品Goods路由开结束 ----------------------
+
 // 匹配 404
 app.get('*', (req, res) => {
     res.send('没有找到网页');
 });
 
-// 添加评论
-app.post('/api/addnewscom', router.doAddNewsComment);
 
 // app 默认在 6666 端口监听
 app.listen(port);

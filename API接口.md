@@ -130,3 +130,17 @@
     content: '沙发'
 }
 ````
+
+## 商品 Goods
+
+1. 分页获取所有的商品信息 [http://localhost:3000/api/getgod?pageIdx=1](null)
+
+````javascript
+{
+    status: 1,
+    gods: [{
+        addDate: '2019-05-10T07:54:29.984Z',
+        imgIntro: ['图片一', '图片2]
+    }]    
+}
+````
