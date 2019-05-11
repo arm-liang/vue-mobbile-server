@@ -10,7 +10,10 @@ const GoodsCommentSchema = mongoose.Schema({
         // 评论的id号码
         comId: Number,
         // 评论的用户名
-        username: String,
+        username: {
+            type: String,
+            default: '匿名'
+        },
         // 评论的日期
         comDate: {
             type: Date,

@@ -1,11 +1,10 @@
-# > 端口详细请看 src/config.js，默认是3000
+# 端口详细请看 src/config.js，默认是3000
 
-> 不是查询操作的所有响应数据都是：status 为-1 是查询失败， status 1 是查询成功
+> ## CUD (添加、更新、删除)统一返回的数据：status 为-1 是查询失败， status 1 是查询成功
 
 ## 封面图片
 
-1. 查询封面，[http://localhost:3000/api/getcover](null)
-2. 响应数据格式
+### 查询封面，[http://localhost:3000/api/getcover](null)
 
 ````javascript
 {
@@ -16,9 +15,7 @@
 
 ## 新闻
 
-1. 查询新闻，pageIdx 表示页码 [http://localhost:3000/api/getnews?pageIdx=1](null)
-
-2. 响应的数据格式
+### 查询新闻，pageIdx 表示页码 [http://localhost:3000/api/getnews?pageIdx=1](null)
 
 ```javascript
 {
@@ -36,9 +33,7 @@
 }
 ````
 
-1. 按照新闻 id 查询新闻详细 [http://localhost:3000/api/getnewsdetail?newsId=1](null)
-
-2. 响应数据
+### 按照新闻 id 查询新闻详细 [http://localhost:3000/api/getnewsdetail?newsId=1](null)
 
 ````javascript
 {
@@ -57,9 +52,7 @@
 
 ## 新闻评论
 
-1. 获取评论[http://localhost:3000/api/getnewscom?newsId=1&pageIdx=1](null)
-
-2. 响应数据格式
+### 获取评论[http://localhost:3000/api/getnewscom?newsId=1&pageIdx=1](null)
 
 ````javascript
 {
@@ -69,9 +62,7 @@
 }
 ````
 
-1. 添加新闻评论 [http://localhost:3000/api/addnewscom?newsId=number](null)
-
-2. 发送数据格式要求 `post` 方法发送
+### `post` 方法发送新闻评论 [http://localhost:3000/api/addnewscom?newsId=number](null)
 
 ````javascript
 {
@@ -80,14 +71,9 @@
 }
 ````
 
-3. 响应数据格式
-
-如上定义
-
 ## 图片 photo
 
-1. 获取图片分类 [http://localhost:3000/api/getphotypes](null)
-2. 响应数据格式
+### 获取图片分类 [http://localhost:3000/api/getphotypes](null)
 
 ````javascript
 {
@@ -96,8 +82,7 @@
 }
 ````
 
-1. 分页获取对应分类的所有图片信息 [http://localhost:3000/api/getpho?pageIdx=0&type=类型](null)，`如果没有添加分类信息则是查询所有`
-2. 响应数据格式
+### 分页获取对应分类的所有图片信息 [http://localhost:3000/api/getpho?pageIdx=0&type=类型](null)，`如果没有添加分类信息则是查询所有`
 
 ````javascript
 {
@@ -110,8 +95,7 @@
 }
 ````
 
-1. 根据图片的id查询图片的详细 [http://localhost:3000/api/getphodetail?phoId=1](null)
-2. 响应数据格式
+### 根据图片的id查询图片的详细 [http://localhost:3000/api/getphodetail?phoId=1](null)
 
 ````javascript
 {
@@ -120,7 +104,7 @@
 }
 ````
 
-1. 根据图片的id查询图片的所有评论 [http://localhost:3000/api/getphocom?phoId=1](null)
+### 根据图片的id查询图片的所有评论 [http://localhost:3000/api/getphocom?phoId=1](null)
 
 ````javascript
 {
@@ -133,14 +117,67 @@
 
 ## 商品 Goods
 
-1. 分页获取所有的商品信息 [http://localhost:3000/api/getgod?pageIdx=1](null)
+### 分页获取所有的商品信息 [http://localhost:3000/api/getgod?pageIdx=1](null)
 
 ````javascript
 {
     status: 1,
-    gods: [{
-        addDate: '2019-05-10T07:54:29.984Z',
-        imgIntro: ['图片一', '图片2]
-    }]    
+    gods: [
+        {
+            godId: 0,
+            oldPrice: 999,
+            newPrice: 699,
+            addDate: '2019-05-10T07:54:29.984Z',
+            intro: '商品的文字介绍',
+            phos: ['商品图片一', '商品图片二'],
+            imgIntro: ['图文介绍一', '图片介绍2],
+            name: '商品名称',
+            quantity: 30,
+            godNumber: '201801160604531',
+        }
+    ]
+}
+````
+
+### 获取商品详细 [http://localhost:3000/api/getgoddetail?godId=1](null)
+
+````javascript
+{
+    status: 1,
+    god: {
+            godId: 0,
+            oldPrice: 999,
+            newPrice: 699,
+            addDate: '2019-05-10T07:54:29.984Z',
+            intro: '商品的文字介绍',
+            phos: ['商品图片一', '商品图片二'],
+            imgIntro: ['图文介绍一', '图片介绍2],
+            name: '商品名称',
+            quantity: 30,
+            godNumber: '201801160604531',
+        }
+}
+
+````
+
+### 分页获取商品的评论 [http://localhost:3000/api/getgodcom?godId=1&pageIdx=1](null)
+
+````javascript
+{
+    status: 1,
+    comments: [{
+        comId: 0,
+        username: '用户名',
+        content: '评论的内容'
+    }]
+}
+````
+
+### `post`方式发送商品评论[http://localhost:3000/api/addgodcom?godId=1](null)
+
+````javascript
+{
+    username: 'username',
+    content: '评论内容'
 }
 ````
