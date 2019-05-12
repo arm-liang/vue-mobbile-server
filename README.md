@@ -1,6 +1,7 @@
-# 这是一个配合个人学习项目 vue-mobbile 的 nodejs 服务器
+# 这是一个配合VUE移动端网页学习项目 [vue-mobbile](https://github.com/arm-liang/vue-mobbile-learning) 使用的 nodejs 服务器
 
 > 项目使用 nodejs + express + mongodb + mongoose 来实现网页JSON服务器，服务器默认运行在本地3000端口
+> 测试服务器 [120.77.181.41:3000]()
 
 ## [总体设计](总体设计.md)
 
@@ -14,3 +15,5 @@
 ## [API接口](API接口.md)
 
 > 该文件定义了前台浏览器和服务器沟通的采用何种标准
+
+>### 本项目仅供学习和参考，请勿用于任何商业用途，任何图片和资源均来自网络，转载请注明出处，如果喜欢请不要忘了 `Star` :star: and `Fork` :fork_and_knife: me
