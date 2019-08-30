@@ -4,6 +4,15 @@
 > 测试服务器 [http://120.77.181.41:3000]()，由于Nodejs单线程的缘故，服务器可能会崩。所以如果崩了，请自己动手去搭建。
 > 服务器的数据在下面的压缩包里面，请使用 mongorestore -h <hostname><:port> -d dbname <path>，来初始化服务器数据
 > 比如 mongorestore -h localhost:27017 -d mobile ./mobile
+  
+## 自行搭建服务
+
+> 自行搭建服务请下载MongoDB数据库[https://www.mongodb.com/](https://www.mongodb.com/)，下载正常安装之后设置通过这个命令设置MongoDB数据库文件存储位置
+`mongod --dbpath "d:\mongodb-path"`
+> 去nodejs官网下载新版的nodejs[http://nodejs.cn/](http://nodejs.cn/)
+> 下载整个项目，通过命令行进入项目目录
+> npm start 启动项目
+> 数据库连接的配置在 src/config.js中保存，默认访问本地的localhost:27017
 
 ## [总体设计](总体设计.md)
 
