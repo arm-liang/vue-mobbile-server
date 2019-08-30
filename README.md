@@ -7,12 +7,12 @@
   
 ## 自行搭建服务
 
-> 自行搭建服务请下载MongoDB数据库[https://www.mongodb.com/](https://www.mongodb.com/)，下载正常安装之后设置通过这个命令设置MongoDB数据库文件存储位置
-`mongod --dbpath "d:\mongodb-path"`
-> 去nodejs官网下载新版的nodejs[http://nodejs.cn/](http://nodejs.cn/)
-> 下载整个项目，通过命令行进入项目目录
-> npm start 启动项目
-> 数据库连接的配置在 src/config.js中保存，默认访问本地的localhost:27017
+1. 自行搭建服务请下载MongoDB数据库[https://www.mongodb.com/](https://www.mongodb.com/)，下载正常安装之后设置通过这个命令设置MongoDB数据库文件存储位置
+`mongod --dbpath "d:\mongodb-path"`，路径随意
+2. 去nodejs官网下载新版的nodejs[http://nodejs.cn/](http://nodejs.cn/)
+3. 下载整个项目，通过命令行进入项目目录
+4. npm start 或者 node index.js启动项目
+5. 数据库连接的配置在 src/config.js中保存，默认访问本地的localhost:27017
 
 ## [总体设计](总体设计.md)
 
