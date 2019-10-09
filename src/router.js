@@ -44,7 +44,7 @@ exports.doFindNewsByPageIdx = function (req, res) {
         // 发送 JSON 数据
         res.send({
             status: 1,
-            news: JSON.stringify(data)
+            news: data
         });
     });
 };
